@@ -44,6 +44,11 @@ COPY . /app
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 
+RUN groupadd -r dev --gid=222 && useradd -r -g dev --uid=222 dev && \
+    chown -R dev:dev ~dev
+
+USER dev
+
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
