@@ -4,10 +4,12 @@ RUN apt-get update && \
     apt-get install -y \
         bash \
         bash-completion \
+        binutils \
         build-essential \
         ca-certificates \
         curl \
         git \
+        less \
         libxml2 \
         locales \
         nodejs \
