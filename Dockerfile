@@ -38,7 +38,7 @@ WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 
-RUN bundle install
+RUN bundle update && bundle install
 COPY . /app
 
 COPY entrypoint.sh /usr/bin/
