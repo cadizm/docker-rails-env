@@ -13,6 +13,11 @@ class AuthorsController < ApplicationController
     author.update_attributes(update_params)
   end
 
+  def destroy
+    head :not_found unless author
+    author.destroy
+  end
+
   def book_count
     min = params.fetch(:min, 1)
     @authors = Author

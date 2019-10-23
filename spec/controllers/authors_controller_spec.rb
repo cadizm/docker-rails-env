@@ -25,4 +25,20 @@ describe AuthorsController, type: :controller do
       end
     end
   end
+
+  describe '#destroy' do
+    let!(:author) { FactoryBot.create(:author) }
+
+    it 'returns 204 status code' do
+      expect {delete :destroy, params: {id: author.id}}.to change{Author.count}.from(1).to(0)
+      expect(response).to have_http_status(204)
+    end
+
+    context 'invalid Author id' do
+      it 'returns 404 status code' do
+        put :update, params: {id: 0, name: 'New Dude'}
+        expect(response).to have_http_status(404)
+      end
+    end
+  end
 end
